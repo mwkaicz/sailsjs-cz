@@ -1,12 +1,12 @@
 /**
  * app.js
  *
- * Use `app.js` to run your app without `sails lift`.
- * To start the server, run: `node app.js`.
+ * Použijte `app.js` pro spuštění vaši aplikace bez příkazu `sails lift`.
+ * Pro spuštění serveru, zadejte příkaz: `node app.js`.
  *
- * This is handy in situations where the sails CLI is not relevant or useful.
+ * Toto je šikovné v situacích, kde sails CLI není zrovna důležitý či užitečný.
  *
- * For example:
+ * Například:
  *   => `node app.js`
  *   => `forever start app.js`
  *   => `node debug app.js`
@@ -14,30 +14,30 @@
  *   => `heroku scale`
  *
  *
- * The same command-line arguments are supported, e.g.:
+ * Jsou podporovány stále ty samé argumenty, např.:
  * `node app.js --silent --port=80 --prod`
  */
 
-// Ensure we're in the project directory, so relative paths work as expected
-// no matter where we actually lift from.
+// Ověřte si, že jste ve složce s projektem, tudíž všechny relativní složky fungují jak očekáváme,
+// bez ohledu na to, kde zrovna aktuálně aplikaci nahazujeme.
 process.chdir(__dirname);
 
-// Ensure a "sails" can be located:
+// Ověřování kde by se mohl 'sails' nacházet:
 (function() {
   var sails;
   try {
     sails = require('sails');
   } catch (e) {
-    console.error('To run an app using `node app.js`, you usually need to have a version of `sails` installed in the same directory as your app.');
-    console.error('To do that, run `npm install sails`');
+    console.error('Pro běh aplikace za použití `node app.js`, obvykle potřebujeme mít verzi `sails` nainstalovanou ve stejné složce.');
+    console.error('K tomu potřebujeme zavolat příkaz `npm install sails`');
     console.error('');
-    console.error('Alternatively, if you have sails installed globally (i.e. you did `npm install -g sails`), you can use `sails lift`.');
-    console.error('When you run `sails lift`, your app will still use a local `./node_modules/sails` dependency if it exists,');
-    console.error('but if it doesn\'t, the app will run with the global sails instead!');
+    console.error('Jako alternativa, pokud máte sails nainstalován globálně  (použil jste příkaz `npm install -g sails`), můžete použít příkaz `sails lift`.');
+    console.error('Když spustíte aplikaci příkazem `sails lift`, vaše aplikace bude stále používat složku `./node_modules/sails` pokud existuje,');
+    console.error('pokud však ne, aplikace místo toho poběží pomocí globálně nainstalovaného sailsu!');
     return;
   }
 
-  // Try to get `rc` dependency
+  // Pokud o získání `rc`
   var rc;
   try {
     rc = require('rc');
@@ -45,15 +45,15 @@ process.chdir(__dirname);
     try {
       rc = require('sails/node_modules/rc');
     } catch (e1) {
-      console.error('Could not find dependency: `rc`.');
-      console.error('Your `.sailsrc` file(s) will be ignored.');
-      console.error('To resolve this, run:');
+      console.error('Nelze nalézt: `rc`.');
+      console.error('Váš `.sailsrc` soubor bude ignorován.');
+      console.error('Pro vyřešení tohoto problému, spusťe příkaz:');
       console.error('npm install rc --save');
       rc = function () { return {}; };
     }
   }
 
 
-  // Start server
+  // Spuštění serveru
   sails.lift(rc('sails'));
 })();
