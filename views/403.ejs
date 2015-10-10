@@ -21,13 +21,13 @@
 
 
 
-  This is the default "403: Forbidden" page.
-  User agents that don't "Accept" HTML will see a JSON version instead.
-  You can customize the control logic for your needs in `config/403.js`
+  Toto je výchozí "403: Forbidden" stránka.
+  Uživatelský agent, který "Nepříjme" HTML uvidí namísto toho JSON verzi.
+  Přizpůsobení logiky controly lze provést pro vaše potřeby v 'config/403.js' 
 
-  You can trigger this response from one of your controllers or policies with:
+  Tuto odpověď můžete spustit z jakéhokoliv controlleru nebo politiky za pomoci:
   `return res.forbidden( msg );`
-  (where `msg` is an optional error message to include in the response)
+  (kde `msg` je volitelná chybová hláška, která je poté začleněna do odpovědi)
 
 
 
@@ -35,7 +35,7 @@
 -->
 <html>
   <head>
-    <title>Forbidden</title>
+    <title>Zamítnuto</title>
     <link href='http://sailsjs.org/styles/fonts.css' rel='stylesheet'/>
     <style>
       /* Styles included inline since you'll probably be deleting or replacing this page anyway */
@@ -51,17 +51,17 @@
 
       <div class="main">
         <h1>
-          Forbidden
+          Zamítnuto
         </h1>
         <h2>
           <% if (typeof error !== 'undefined') { %>
           <%= error %>
           <% } else { %>
-          You don't have permission to see the page you're trying to reach.
+          Nemáte dostatečná práva pro zobrazení stránky, kterou se pokoušíte navštívit.
           <% } %>
         </h2>
         <p class="help">
-          <a href="http://en.wikipedia.org/wiki/HTTP_403">Why</a> might this be happening?
+          <a href="http://en.wikipedia.org/wiki/HTTP_403">Jak</a> se to mohlo stát?
         </p>
       </div>
 
